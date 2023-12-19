@@ -23,6 +23,7 @@ def create_book_handler(request: HttpRequest) -> HttpResponse:
     if not all([title, author_full_name, isbn]):
         return HttpResponseBadRequest("One of required parameters are missing")
 
+    assert title and author_full_name and isbn
     book = create_book(title, author_full_name, isbn)
 
     return JsonResponse({

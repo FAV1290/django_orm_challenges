@@ -17,7 +17,7 @@ def update_book(book_id: int, new_title: str, new_author_full_name: str, new_isb
         target_book = Book.objects.get(id=book_id)
     except Book.DoesNotExist:
         return None
-    
+
     target_book.title = new_title
     target_book.author_full_name = new_author_full_name
     target_book.isbn = new_isbn
@@ -33,6 +33,7 @@ def update_book_handler(request: HttpRequest, book_id: int) -> HttpResponse:
     if not all([title, author_full_name, isbn]):
         return HttpResponseBadRequest("One of required parameters are missing")
 
+    assert title and author_full_name and isbn
     book = update_book(book_id, title, author_full_name, isbn)
 
     if book is None:
