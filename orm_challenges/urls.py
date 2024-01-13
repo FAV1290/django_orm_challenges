@@ -1,4 +1,5 @@
 from django.urls import path
+from django.contrib import admin
 
 from challenges.views.level_1.a_create_book import create_book_handler
 from challenges.views.level_1.b_book_details import book_details_handler
@@ -26,4 +27,7 @@ urlpatterns = [
     path('posts/untagged/', untagged_posts_list_view),
     path('posts/by-categories/', categories_posts_list_view),
     path('posts/last-published/', last_days_posts_list_view),
+
+    # admin panel
+    path('admin/', admin.site.urls),
 ]

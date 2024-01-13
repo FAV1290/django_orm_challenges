@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>Posts</title>
+  </head>
+  <body>
+    <main class="container">
+    {% for post in posts %}
+      <article>
+        <nav>
+          <ul>
+            <li><strong>{{ post.title }}</strong></li>
+          </ul>
+        </nav>
+        {{ post.body }}
+        <br>
+        <table>
+            <tr>
+                <td><b>author:</b> {{ post.author }}</td>
+                <td><b>status:</b> {{ post.status }}</td>
+                <td><b>category:</b> {% if post.category %} {{ post.category }} {% else %} Undefined {% endif %}</td>
+                <td><b>published:</b> {{ post.published_at|date:"d-m-Y H:i" }}</td>
+            </tr>
+        </table>
+      </article>
+    {% empty %}
+    <article>
+      <nav>
+        <ul>
+          <li><strong>No posts found</strong></li>
+        </ul>
+      </nav>
+      Sorry, there is a lack of posts today
+    </article>
+    {% endfor %}
+    </main>
+  </body>
+</html>

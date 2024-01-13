@@ -6,7 +6,7 @@ SECRET_KEY = 'django-insecure-09h#b!z-+y8+_+66)7dw)zak=7!yl6m-05kv!em9@zs+ie+202
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS: list[str] = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -15,7 +15,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'django_extensions',
     'challenges',
 ]
 
